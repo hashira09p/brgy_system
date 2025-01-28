@@ -1,0 +1,11 @@
+development:
+  admin:
+    - "admin.com"
+    - ngrok-free.app
+  barangay:
+    - "barangay.com"
+production:
+  admin:
+    - "admin.com"
+  barangay:
+    - "barangay.com"

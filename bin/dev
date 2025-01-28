@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
+trap 'kill -TERM $PID' TERM INT
+
+./bin/rails server -p 3000 -b 0.0.0.0 &
+PID=$!
+
+./bin/rails tailwindcss:watch &
+./bin/rails javascript:watch &
+wait $PID
