@@ -11,11 +11,12 @@ gem 'concurrent-ruby', '1.3.4'
 gem 'webpacker'
 
 gem 'jsbundling-rails'
-gem 'tailwindcss-rails'
 
 gem 'devise'
 
 gem 'kaminari'
+
+gem 'bootstrap', '~> 5.0.0'
 
 
 gem 'activerecord'
