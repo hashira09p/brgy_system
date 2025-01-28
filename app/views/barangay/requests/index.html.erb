@@ -1,0 +1,74 @@
+<% if notice %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= notice %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+
+<% if alert %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <%= alert %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3 bg-primary text-white vh-100 p-3">
+      <h3 class="text-center mb-4">BRGY. 790</h3>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <%= link_to 'Announcement', home_index_path, class: 'nav-link text-white' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Add request', new_barangay_request_path, class: 'nav-link text-white' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Request History', requests_path, class: 'nav-link text-white' %>
+        </li>
+      </ul>
+      <div class="mt-4">
+        <button class="btn btn-light w-100 mb-2">Edit Profile</button>
+        <%= button_to 'Log out', destroy_barangay_user_session_path, method: :delete, class:'btn btn-danger w-100' %>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-9">
+      <!-- Header Section -->
+      <div class="d-flex justify-content-between align-items-center p-3">
+        <h4>Request History</h4>
+        <input type="date" class="form-control w-25" id="announcement_date">
+      </div>
+
+      <!-- Requests List -->
+      <div class="p-3">
+        <% @requests.each do |request| %>
+          <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Request by: <%= request.firstname %></h5>
+              <p class="card-text">
+                <strong>Requested Document:</strong> <%= request.requested_document %><br>
+                <strong>Document Purpose:</strong> <%= request.document_purpose %>
+              </p>
+              <p class="card-text">
+                <strong>Message:</strong> <%= request.message.presence || "No message provided" %>
+              </p>
+              <p class="text-muted small mb-0">
+                <strong>Status:</strong> <%= request.state %><br>
+                <em>Submitted on:</em> <%= request.created_at.strftime('%B %d, %Y, %I:%M %p') %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- Pagination -->
+        <div class="d-flex justify-content-center mt-3">
+          <%= paginate @requests %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

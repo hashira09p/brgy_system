@@ -19,13 +19,13 @@
       <h3 class="text-center mb-4">BRGY. 790</h3>
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a href="#" class="nav-link text-white">Announcement</a>
+          <%= link_to 'Announcement', home_index_path, class: 'nav-link text-white' %>
         </li>
         <li class="nav-item">
           <%= link_to 'Add request', new_barangay_request_path, class: 'nav-link text-white' %>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link text-white">Request History</a>
+          <%= link_to 'Request History', requests_path, class: 'nav-link text-white' %>
         </li>
       </ul>
       <div class="mt-4">

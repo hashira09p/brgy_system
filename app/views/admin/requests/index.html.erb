@@ -1,0 +1,39 @@
+<main class="col-md-9 p-4">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <h2>Requests</h2>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Requested Document</th>
+          <th scope="col">Purpose</th>
+          <th scope="col">State</th>
+          <th scope="col">Message</th>
+          <th scope="col">Created At</th>
+          <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @requests.each_with_index do |request, index| %>
+          <tr>
+            <th scope="row"><%= index + 1 %></th>
+            <td><%= request.firstname %></td>
+            <td><%= request.requested_document %></td>
+            <td><%= request.document_purpose %></td>
+            <td><%= request.state %></td>
+            <td><%= request.message %></td>
+            <td><%= request.created_at.strftime("%d %b %Y %H:%M") %></td>
+            <td>
+              <%= button_to 'Process', request_process_path(request), method: :patch, class: 'btn btn-sm btn-danger' %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>

@@ -2,7 +2,8 @@ class Barangay::RequestsController < ApplicationController
   before_action :set_params, only: [:create, :update]
 
   def index
-    @request = Request.where(user: current_user)
+    @requests = Request.where(user: current_barangay_user)
+                      .page(params[:page]).per(2)
   end
 
   def new
