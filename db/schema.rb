@@ -20,12 +20,14 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_28_053529) do
 
   create_table "requests", charset: "utf8mb4", force: :cascade do |t|
     t.string "firstname"
+    t.bigint "user_id"
     t.string "requested_document"
     t.string "document_purpose"
     t.string "state"
     t.string "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
