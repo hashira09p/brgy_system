@@ -1,0 +1,37 @@
+<%= form_with model: @request, local: true, class: "needs-validation", novalidate: true do |f| %>
+  <div class="container mt-4">
+    <div class="card shadow-sm">
+      <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">Submit a Request</h5>
+      </div>
+      <div class="card-body">
+
+        <!-- Requested Document -->
+        <div class="mb-3">
+          <%= f.label :requested_document, "Requested Document", class: "form-label" %>
+          <%= f.text_field :requested_document, class: "form-control", placeholder: "e.g., Birth Certificate", required: true %>
+        </div>
+
+        <!-- Document Purpose -->
+        <div class="mb-3">
+          <%= f.label :document_purpose, "Document Purpose", class: "form-label" %>
+          <%= f.text_area :document_purpose, class: "form-control", rows: 3, placeholder: "Describe the purpose for this document", required: true %>
+        </div>
+
+        <!-- Message -->
+        <div class="mb-3">
+          <%= f.label :message, "Message", class: "form-label" %>
+          <%= f.text_area :message, class: "form-control", rows: 4, placeholder: "Add additional details or messages here", required: false %>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <!-- Submit Button -->
+          <%= f.submit "Submit Request", class: "btn btn-success" %>
+
+          <!-- Reset Button -->
+          <%= button_tag "Reset Form", type: "reset", class: "btn btn-secondary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
