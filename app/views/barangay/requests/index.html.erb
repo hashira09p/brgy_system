@@ -47,7 +47,8 @@
         <% @requests.each do |request| %>
           <div class="card mb-3 shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">Request by: <%= request.firstname %></h5>
+              <h5 class="card-title">Request by: <%= request.user.firstname %> <%= request.user.middlename %>
+                                                  <%= request.user.lastname %></h5>
               <p class="card-text">
                 <strong>Requested Document:</strong> <%= request.requested_document %><br>
                 <strong>Document Purpose:</strong> <%= request.document_purpose %>
