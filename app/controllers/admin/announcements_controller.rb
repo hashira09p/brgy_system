@@ -15,10 +15,10 @@ class Admin::AnnouncementsController < AdminApplicationController
     @announcement = Announcement.new(set_params)
     if @announcement.save
       flash[:notice] = 'Announcement was successfully created.'
-      redirect_to announcements_path
+      redirect_to home_index_path
     else
       flash[:notice] = 'Announcement was NOT created.'
-      redirect_to new_announcement_path
+      redirect_to home_index_path
     end
   end
 
@@ -27,7 +27,7 @@ class Admin::AnnouncementsController < AdminApplicationController
   def update
     if @announcement.update(set_params)
       flash[:notice] = 'Announcement was successfully updated.'
-      redirect_to announcements_path
+      redirect_to home_index_path
     else
       flash[:alert] = 'Announcement was failed to update.'
       redirect_to edit_announcement_path
@@ -37,10 +37,10 @@ class Admin::AnnouncementsController < AdminApplicationController
   def destroy
     if @announcement.destroy
       flash[:notice] = 'Announcement was successfully destroyed.'
-      redirect_to announcements_path
+      redirect_to home_index_path
     else
       flash[:alert] = 'Announcement was failed to destroyed.'
-      redirect_to announcements_path
+      redirect_to home_index_path
     end
   end
 
