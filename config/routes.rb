@@ -14,11 +14,11 @@ Rails.application.routes.draw do
       resources :home
       resources :announcements
       resources :requests do
-        patch :complete
+        patch :process_state
+        patch :complete_state
       end
     end
     root 'admin/home#index', as: :admin_root
-    post '/requests/:request_id/process', as: :request_process_path
   end
 
   constraints(BarangayDomainConstraint.new) do
