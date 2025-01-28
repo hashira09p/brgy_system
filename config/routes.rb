@@ -32,8 +32,10 @@ Rails.application.routes.draw do
       resources :users
       resources :home
       resources :resources
+      resources :requests
     end
     root 'barangay/home#index', as: :barangay_root
     get '/requests/new', to: 'barangay/requests#new', as: :new_barangay_request
+    post '/requests', to: 'barangay/requests#create', as: :create_barangay_request
   end
 end
